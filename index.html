@@ -44,173 +44,314 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>New Sensi - Painel XIT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <title>New Sensi - Painel XIT Premium | O Melhor do Brasil</title>
+    <meta name="description" content="O painel XIT mais avançado do Brasil. +10.000 players já dominam o Free Fire. Mira automática 100% capa, anti-ban garantido." />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
+    <!-- CSS Frameworks -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/0b784d4cf8.js" crossorigin="anonymous"></script>
 
     <style>
+        /* ===== VARIÁVEIS CSS PROFISSIONAIS ===== */
         :root {
-            --bg: #0b0b0b;
-            --card: #141414;
-            --text: #ffffff;
-            --accent: #00e676;
-            --muted: #ffffff;
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #111111;
+            --card-bg: #1a1a1a;
+            --accent-primary: #00ff41;
+            --accent-secondary: #00e676;
+            --accent-danger: #ff4757;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --shadow-primary: 0 20px 60px rgba(0, 255, 65, 0.15);
+            --shadow-secondary: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-radius: 20px;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient-primary: linear-gradient(135deg, #00ff41 0%, #00e676 50%, #39ff14 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #111111 100%);
         }
 
+        /* ===== RESET E BASE ===== */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-        }
-
-        /* Garantir que todos os textos sejam brancos visíveis */
-        h1, h2, h3, h4, h5, h6, p, span, div, li, a {
-            color: #ffffff !important;
-        }
-
-        /* Exceções para elementos com cores específicas */
-        .neon-red {
-            color: #1cf300 !important;
-            text-shadow: 0 0 5px #2bff00, 0 0 10px #005103, 0 0 20px #000000;
-        }
-
-        .neon-vermelho {
-            color: #ff4d4d !important;
-            text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 40px #ff4d4d;
-        }
-
-        .star-green {
-            color: #00ff00 !important;
-            font-size: 1.2rem;
-        }
-
-        .fire {
-            color: #ff6b35 !important;
-        }
-
-        .white-bold {
-            color: #ffffff !important;
-            font-weight: bold;
-        }
-
-        /* Banner cupom */
-        #banner-cupom {
-            background: linear-gradient(90deg, #00e676, #00c853);
-            padding: 15px;
-            text-align: center;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.5rem;
-            color: #fff;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
             position: relative;
-            z-index: 999;
         }
 
-        h1, h2, h3 {
+        /* Background animado profissional */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 230, 118, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 71, 87, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ===== TIPOGRAFIA PROFISSIONAL ===== */
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Bebas Neue', cursive;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--text-primary);
+            text-rendering: optimizeLegibility;
         }
 
-        /* Hero */
-        .hero {
-            padding: 60px 15px;
+        .display-1 { font-size: clamp(3rem, 8vw, 6rem); }
+        .display-2 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+        .display-3 { font-size: clamp(2rem, 5vw, 3.5rem); }
+
+        p, span, div, li, a {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        /* ===== EFEITOS NEÓN PREMIUM ===== */
+        .neon-primary {
+            color: var(--accent-primary) !important;
+            text-shadow: 
+                0 0 5px var(--accent-primary),
+                0 0 10px var(--accent-primary),
+                0 0 20px var(--accent-primary),
+                0 0 40px var(--accent-primary);
+            animation: neonPulse 3s ease-in-out infinite alternate;
+        }
+
+        .neon-danger {
+            color: var(--accent-danger) !important;
+            text-shadow: 
+                0 0 5px var(--accent-danger),
+                0 0 10px var(--accent-danger),
+                0 0 20px var(--accent-danger);
+            animation: neonDangerPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from { 
+                text-shadow: 
+                    0 0 5px var(--accent-primary),
+                    0 0 10px var(--accent-primary),
+                    0 0 20px var(--accent-primary);
+            }
+            to { 
+                text-shadow: 
+                    0 0 8px var(--accent-primary),
+                    0 0 15px var(--accent-primary),
+                    0 0 25px var(--accent-primary),
+                    0 0 35px var(--accent-primary);
+            }
+        }
+
+        @keyframes neonDangerPulse {
+            from { 
+                text-shadow: 
+                    0 0 5px var(--accent-danger),
+                    0 0 10px var(--accent-danger);
+            }
+            to { 
+                text-shadow: 
+                    0 0 8px var(--accent-danger),
+                    0 0 15px var(--accent-danger),
+                    0 0 25px var(--accent-danger);
+            }
+        }
+
+        /* ===== BANNER SUPERIOR PREMIUM ===== */
+        .premium-banner {
+            background: var(--gradient-primary);
+            padding: 18px 0;
             text-align: center;
-            background: radial-gradient(circle at top left, rgba(0, 230, 118, 0.15), transparent 40%), radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.25), transparent 40%);
-        }
-        .hero img {
-            max-width: 90px;
-            margin-bottom: 16px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #000;
+            position: relative;
+            overflow: hidden;
+            z-index: 1000;
         }
 
-        .video-neon {
-            border-radius: 20px;
-            box-shadow: 0 0 10px #00ff00, 0 0 13px #00ff00;
+        .premium-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: bannerShine 3s infinite;
+        }
+
+        @keyframes bannerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ===== HERO SECTION PROFISSIONAL ===== */
+        .hero-premium {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 80px 0;
+            background: var(--gradient-dark);
             overflow: hidden;
         }
 
-        .video-neon iframe {
-            border: none;
-            border-radius: 20px;
+        .hero-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at top center, rgba(0, 255, 65, 0.1) 0%, transparent 70%),
+                radial-gradient(circle at bottom left, rgba(0, 230, 118, 0.08) 0%, transparent 50%);
+            z-index: 1;
         }
 
-        .btn-custom {
-            background-color: #000;
-            color: #fff;
-            border: 2px solid #00e676;
-            font-weight: 600;
-            padding: 0.75rem 1.25rem;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .btn-custom:hover {
-            background-color: #00e676;
-            color: #000;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .card {
-            background-color: var(--card);
-            color: #ffffff;
-            border: 1px solid #222;
-            border-radius: 1rem;
-        }
-        .card-img-top {
-            border-radius: 1rem 1rem 0 0;
-            object-fit: cover;
+        .logo-premium {
+            max-width: 120px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 65, 0.5));
+            animation: logoFloat 6s ease-in-out infinite;
         }
 
-        .badge-accent {
-            background-color: #00e676;
-            color: #000;
-            font-weight: 700;
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* BOTÃO SUPER CHAMATIVO COM EFEITO NEÓN E BRILHO (BRILHO REDUZIDO) */
-        .btn-super-neon {
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .users-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 255, 65, 0.1);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 2px solid var(--accent-primary);
+            margin: 20px 0;
+            animation: counterPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes counterPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* ===== VÍDEO PREMIUM ===== */
+        .video-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 65, 0.3),
+                var(--shadow-secondary);
+            margin: 40px 0;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: var(--transition-smooth);
+        }
+
+        .video-container:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.02);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 65, 0.5),
+                0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), transparent, rgba(0, 255, 65, 0.1));
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ===== BOTÃO CTA PREMIUM ===== */
+        .cta-premium {
             position: relative;
             display: inline-block;
-            padding: 18px 35px;
-            font-size: 1.4rem;
+            padding: 22px 45px;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #000 !important;
-            background: linear-gradient(45deg, #00ff41, #00e676, #39ff14, #00ff41);
-            background-size: 400% 400%;
+            background: var(--gradient-primary);
+            background-size: 200% 200%;
             border: none;
             border-radius: 50px;
             text-decoration: none;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
-            
-            /* Sombra neón reduzida */
+            transition: var(--transition-smooth);
             box-shadow: 
-                0 0 5px #00ff41,
-                0 0 10px #00ff41,
-                0 0 15px #00ff41,
-                inset 0 0 5px rgba(0, 255, 65, 0.1);
-            
-            /* Animação de brilho */
-            animation: 
-                neon-pulse-reduced 2s infinite,
-                gradient-shift 3s ease-in-out infinite;
+                0 0 20px rgba(0, 255, 65, 0.4),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: ctaGlow 3s ease-in-out infinite;
         }
 
-        .btn-super-neon:hover {
-            transform: scale(1.05);
+        .cta-premium:hover {
+            transform: translateY(-5px) scale(1.05);
             box-shadow: 
-                0 0 8px #00ff41,
-                0 0 15px #00ff41,
-                0 0 20px #00ff41,
-                inset 0 0 8px rgba(0, 255, 65, 0.2);
+                0 0 40px rgba(0, 255, 65, 0.6),
+                0 20px 50px rgba(0, 0, 0, 0.4);
             color: #000 !important;
+            background-position: 100% 0;
         }
 
-        .btn-super-neon:before {
+        .cta-premium::before {
             content: '';
             position: absolute;
             top: 0;
@@ -218,248 +359,139 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s;
+            transition: left 0.6s;
         }
 
-        .btn-super-neon:hover:before {
+        .cta-premium:hover::before {
             left: 100%;
         }
 
-        /* Animações do botão neón com brilho reduzido */
-        @keyframes neon-pulse-reduced {
+        @keyframes ctaGlow {
             0%, 100% { 
                 box-shadow: 
-                    0 0 5px #00ff41,
-                    0 0 10px #00ff41,
-                    0 0 15px #00ff41;
+                    0 0 20px rgba(0, 255, 65, 0.4),
+                    0 10px 30px rgba(0, 0, 0, 0.3);
             }
             50% { 
                 box-shadow: 
-                    0 0 8px #00ff41,
-                    0 0 15px #00ff41,
-                    0 0 20px #00ff41;
+                    0 0 30px rgba(0, 255, 65, 0.6),
+                    0 15px 40px rgba(0, 0, 0, 0.4);
             }
         }
 
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Pulsar efeito original mantido para outros botões */
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 #00ff00; }
-            70% { transform: scale(1.05); box-shadow: 0 0 20px 10px #00ff00; }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 #00ff00; }
-        }
-        .btn-pulse-green {
-            animation: pulse 1.5s infinite;
-        }
-
-        /* Sistema de notificações simples */
-        #notificacoes {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9999;
-        }
-        .notificacao {
-            background-color: #0b8200;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            box-shadow: 0 0 10px rgba(0,255,118,0.7);
-            opacity: 0;
-            animation: aparecer 0.5s forwards, desaparecer 0.5s forwards 4.5s;
-        }
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes desaparecer {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(20px); }
-        }
-
-        /* Sistema avançado de notificações */
-        #notification-container {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 10000;
-        }
-        .purchase-notification {
-            position: relative;
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            border: 2px solid #5CFF4D;
-            border-radius: 15px;
-            padding: 15px 20px;
-            max-width: 350px;
-            box-shadow: 0 10px 30px rgba(92, 255, 77, 0.3);
-            transform: translateX(-120%);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            backdrop-filter: blur(10px);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 10px;
-        }
-        .purchase-notification.show {
-            transform: translateX(0);
-        }
-        .notification-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-        .notification-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #5CFF4D, #4ae63a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #1a1a1a;
-            animation: pulse-icon 2s infinite;
-        }
-        @keyframes pulse-icon {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .notification-content h4 {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 700;
-            color: #5CFF4D;
-        }
-        .notification-content p {
-            margin: 0;
-            font-size: 12px;
-            color: #ffffff;
-            line-height: 1.4;
-        }
-        .notification-time {
-            font-size: 10px;
-            color: #ffffff;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .notification-close {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 16px;
-            padding: 0;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.3s ease;
-        }
-        .notification-close:hover {
-            color: #fff;
-        }
-        .notification-product {
-            font-weight: 600;
-            color: #5CFF4D;
-        }
-
-        /* Contador de vendas MÓVEL E ARRASTÁVEL */
-        .sales-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #ff4757, #ff3742);
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 25px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 12px;
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
-            z-index: 9999;
-            cursor: move;
-            user-select: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: bounce-counter 2s infinite;
-        }
-
-        .sales-counter:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
-        }
-
-        .sales-counter.dragging {
-            animation: none;
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.8);
-            z-index: 10001;
-        }
-
-        @keyframes bounce-counter {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* Accordion específico */
-        .accordion-item {
-            background-color: #121212 !important;
-            color: #ffffff !important;
-        }
-
-        .accordion-button {
-            background-color: #1a1a1a !important;
-            color: #ffffff !important;
-            border: none !important;
-        }
-
-        .accordion-body {
-            background-color: #121212 !important;
-            color: #ffffff !important;
-        }
-
-        /* Garantir texto branco em todos os elementos */
-        .text-white, .text-light {
-            color: #ffffff !important;
-        }
-
-        /* Links mantém cor específica */
-        a {
-            color: #00e676;
-        }
-
-        a:hover {
-            color: #00ff00;
-        }
-
-        /* Estilos para a seção de urgência */
-        .urgencia-section {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            border: 2px solid #ff4757;
-            border-radius: 20px;
+        /* ===== CARDS PREMIUM ===== */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
             padding: 30px;
-            margin: 40px 0;
+            height: 100%;
+            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
         }
 
-        .urgencia-section::before {
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #000;
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ===== DEPOIMENTOS CAROUSEL PREMIUM ===== */
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-primary), transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 15px 0;
+        }
+
+        .star-rating i {
+            color: #ffd700;
+            font-size: 1.2rem;
+            animation: starTwinkle 2s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* ===== SEÇÃO DE URGÊNCIA PREMIUM ===== */
+        .urgency-section {
+            background: linear-gradient(135deg, var(--card-bg), #2d1b1b);
+            border: 2px solid var(--accent-danger);
+            border-radius: var(--border-radius);
+            padding: 50px 30px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .urgency-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -467,92 +499,452 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, rgba(255, 71, 87, 0.1), transparent, rgba(255, 71, 87, 0.1));
-            animation: pulse-urgencia 3s infinite;
+            animation: urgencyPulse 3s infinite;
         }
 
-        @keyframes pulse-urgencia {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.3; }
+        @keyframes urgencyPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
-        .urgencia-content {
+        .urgency-content {
             position: relative;
             z-index: 2;
         }
 
-        .timer-urgencia {
-            font-size: 2rem;
-            color: #ff4757;
+        .countdown-timer {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--accent-danger);
             font-weight: 900;
-            text-shadow: 0 0 10px #ff4757;
-            animation: pulse-timer 1s infinite;
+            font-family: 'Bebas Neue', cursive;
+            text-shadow: 0 0 20px var(--accent-danger);
+            margin: 20px 0;
+            animation: timerPulse 1s infinite;
         }
 
-        @keyframes pulse-timer {
+        @keyframes timerPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
-        .prova-social-box {
-            background: linear-gradient(135deg, #00ff41, #00e676);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
+        /* ===== PROVA SOCIAL PREMIUM ===== */
+        .social-proof {
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            margin: 40px 0;
             color: #000 !important;
-        }
-
-        .prova-social-box h4,
-        .prova-social-box p,
-        .prova-social-box span {
-            color: #000 !important;
-        }
-
-        .garantia-box {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            border: 3px solid #fff;
+            text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .garantia-box::before {
+        .social-proof * {
+            color: #000 !important;
+        }
+
+        .social-proof::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: socialProofShine 4s infinite;
+        }
+
+        @keyframes socialProofShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* ===== PACOTES PREMIUM ===== */
+        .package-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            height: 100%;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .package-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .package-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .package-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .features-list li:hover {
+            padding-left: 10px;
+            color: var(--accent-primary);
+        }
+
+        .features-list i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .price-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .old-price {
+            font-size: 1.8rem;
+            color: var(--accent-danger);
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        .current-price {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+        }
+
+        /* ===== GARANTIA PREMIUM ===== */
+        .guarantee-section {
+            background: linear-gradient(135deg, #1a4d1a, #2d5a2d);
+            border: 3px solid var(--accent-secondary);
+            border-radius: var(--border-radius);
+            padding: 50px 30px;
+            margin: 60px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .guarantee-section::before {
             content: '🛡️';
             position: absolute;
-            top: -15px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            background: #fff;
-            padding: 10px;
+            background: var(--accent-secondary);
+            padding: 15px;
             border-radius: 50%;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.4);
         }
 
-        @media(max-width: 768px) {
-            .purchase-notification {
-                left: 10px;
-                right: 10px;
-                max-width: calc(100% - 20px);
-                bottom: 10px;
-            }
-            .sales-counter {
+        /* ===== CONTADOR DE VENDAS MÓVEL ===== */
+        .sales-counter-mobile {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-danger), #ff6b87);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 
+                0 10px 30px rgba(255, 71, 87, 0.4),
+                0 0 20px rgba(255, 71, 87, 0.3);
+            z-index: 9999;
+            cursor: move;
+            user-select: none;
+            transition: var(--transition-smooth);
+            animation: counterBounce 3s infinite;
+        }
+
+        .sales-counter-mobile:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(255, 71, 87, 0.6),
+                0 0 30px rgba(255, 71, 87, 0.5);
+        }
+
+        .sales-counter-mobile.dragging {
+            animation: none;
+            transform: scale(1.1);
+            box-shadow: 
+                0 20px 50px rgba(255, 71, 87, 0.8),
+                0 0 40px rgba(255, 71, 87, 0.7);
+            z-index: 10001;
+        }
+
+        @keyframes counterBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* ===== NOTIFICAÇÕES PREMIUM ===== */
+        .notification-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10000;
+        }
+
+        .purchase-notification {
+            background: linear-gradient(135deg, var(--card-bg), #2d2d2d);
+            border: 2px solid var(--accent-primary);
+            border-radius: var(--border-radius);
+            padding: 20px 25px;
+            max-width: 380px;
+            box-shadow: 
+                0 20px 40px rgba(0, 255, 65, 0.2),
+                var(--shadow-secondary);
+            transform: translateX(-120%);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(15px);
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .purchase-notification::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: notificationShine 3s infinite;
+        }
+
+        @keyframes notificationShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .purchase-notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #000;
+            animation: iconPulse 2s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ===== FAQ PREMIUM ===== */
+        .faq-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 50px 30px;
+            margin: 60px 0;
+        }
+
+        .accordion-item {
+            background: transparent !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 15px !important;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: var(--card-bg) !important;
+            color: var(--text-primary) !important;
+            border: none !important;
+            padding: 20px 25px !important;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .accordion-button:hover {
+            background: rgba(0, 255, 65, 0.1) !important;
+        }
+
+        .accordion-body {
+            background: var(--secondary-bg) !important;
+            color: var(--text-secondary) !important;
+            padding: 25px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== RESPONSIVIDADE PREMIUM ===== */
+        @media (max-width: 768px) {
+            .sales-counter-mobile {
                 top: 10px;
                 right: 10px;
-                font-size: 11px;
-                padding: 8px 12px;
+                font-size: 12px;
+                padding: 12px 16px;
             }
             
-            .btn-super-neon {
+            .notification-container {
+                left: 10px;
+                right: 10px;
+            }
+            
+            .purchase-notification {
+                max-width: calc(100% - 20px);
+            }
+            
+            .cta-premium {
                 font-size: 1.2rem;
-                padding: 15px 25px;
+                padding: 18px 35px;
             }
+            
+            .hero-premium {
+                min-height: 90vh;
+                padding: 60px 0;
+            }
+            
+            .urgency-section,
+            .guarantee-section {
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .package-card {
+                padding: 30px 20px;
+                margin-bottom: 30px;
+            }
+        }
 
-            .timer-urgencia {
-                font-size: 1.5rem;
+        /* ===== ANIMAÇÕES DE ENTRADA ===== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: fadeInRight 0.8s ease forwards;
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== MICRO-INTERAÇÕES ===== */
+        .hover-lift {
+            transition: var(--transition-smooth);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+
+        .hover-glow {
+            transition: var(--transition-smooth);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ===== OTIMIZAÇÕES DE PERFORMANCE ===== */
+        .will-change-transform {
+            will-change: transform;
+        }
+
+        .gpu-accelerated {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
     </style>
 </head>
+
 <body>
     <!-- Facebook Pixel noscript -->
     <noscript>
@@ -560,612 +952,491 @@
           src="https://www.facebook.com/tr?id=3525977697696631&ev=PageView&noscript=1" />
     </noscript>
     
-    <!-- Banner com cupom -->
-    <div id="banner-cupom">
-        <strong>🔥 ÚLTIMAS HORAS! PROMOÇÃO VÁLIDA SÓ HOJE! PAINEL VIP 🔥</strong>
+    <!-- Banner Premium -->
+    <div class="premium-banner">
+        <strong>🔥 OFERTA EXCLUSIVA! APENAS HOJE - PAINEL VIP COM 80% DE DESCONTO! 🔥</strong>
     </div>
 
-    <!-- Contador de vendas avançado MÓVEL E ARRASTÁVEL -->
-    <div class="sales-counter" id="salesCounter">
-        <i class="fas fa-fire"></i> <span id="sales-count">159</span> vendas hoje!
+    <!-- Contador de Vendas Móvel e Arrastável -->
+    <div class="sales-counter-mobile" id="salesCounterMobile">
+        <i class="fas fa-fire"></i> <span id="salesCount">247</span> vendas hoje!
     </div>
 
-    <!-- Container para notificações avançadas -->
-    <div id="notification-container"></div>
+    <!-- Container para Notificações Premium -->
+    <div class="notification-container" id="notificationContainer"></div>
 
-    <!-- Container para notificações originais -->
-    <div id="notificacoes"></div>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container text-center">
-            <img src="imgs/logo.png" alt="Logo do Produto" />
-            <h1 class="display-5">
-                <span style="color: #ffffff;">MELHOR</span> <span class="neon-red">PAINEL XIT</span> <span style="color: #ffffff;">PRA DAR</span><br>
-                <span class="neon-vermelho">FULL VERMELHO!</span>
-                <br>
-                <span class="fs-6 mt-5" style="color: #ffffff;">NO</span> <span style="color: #ffffff;">FREE FIRE</span><br>
-                <span style="color: #ffffff;">+DE </span> <span class="neon-red">10 MIL PLAYERS!</span>
-            </h1>
-            <p class="fs-6 mt-3" style="color: #ffffff;">
-                <strong id="contador-pessoas" class="neon-red">476</strong> usuários ativos agora!
-            </p>
-            <div class="ratio ratio-16x9 mt-4 video-neon">
-                <iframe src="https://www.youtube.com/embed/SD8KYZ8MRpQ?si=-qPLQXDLwGlh2HY0" title="YouTube video player" allowfullscreen></iframe>
+    <!-- Hero Section Premium -->
+    <section class="hero-premium">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center hero-content fade-in-up">
+                    <img src="imgs/logo.png" alt="New Sensi Logo" class="logo-premium" />
+                    
+                    <h1 class="hero-title">
+                        O <span class="neon-primary">PAINEL XIT</span> Nº1 DO BRASIL<br>
+                        <span class="neon-danger">FULL VERMELHO</span> GARANTIDO!
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Mais de <strong class="neon-primary">10.000 players</strong> já dominam o Free Fire<br>
+                        Mira automática 100% capa • Anti-ban garantido • Suporte 24h
+                    </p>
+                    
+                    <div class="users-counter">
+                        <i class="fas fa-users"></i>
+                        <strong id="userCounter" class="neon-primary">1.247</strong> usuários online agora!
+                    </div>
+                    
+                    <div class="video-container mt-5">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/SD8KYZ8MRpQ?si=-qPLQXDLwGlh2HY0" 
+                                    title="Demonstração Painel XIT" 
+                                    allowfullscreen
+                                    class="gpu-accelerated"></iframe>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-3 mb-4" style="color: var(--text-secondary);">
+                        Veja como nossos clientes estão dominando o Free Fire
+                    </p>
+                    
+                    <a href="#pacotes" class="cta-premium will-change-transform">
+                        🎯 QUERO DOMINAR O FREE FIRE AGORA!
+                    </a>
+                </div>
             </div>
-            <p class="fs-6 mt-3" style="color: #ffffff;">
-               <p class="caption" style="color: #ffffff;">Assista ao vídeo acima e entenda</p>
-            <p class="fs-8 mt-3" style="color: #ffffff;">
-            <a href="#beneficios" class="btn-super-neon mt-4">QUERO XITA NO FREE FIRE!</a>
         </div>
     </section>
 
+    <!-- Features Section Premium -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 fade-in-left">
+                    <div class="feature-card hover-lift">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="text-center mb-3">Vitórias Garantidas</h3>
+                        <p class="text-center">
+                            Mira automática com precisão cirúrgica. Cada tiro é uma eliminação garantida. 
+                            Transforme-se no player mais temido do servidor.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-card hover-lift">
+                        <div class="feature-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h3 class="text-center mb-3">Mira Profissional</h3>
+                        <p class="text-center">
+                            Sistema de rastreamento avançado que gruda na cabeça dos inimigos. 
+                            2x automática que nunca falha, mesmo à longa distância.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 fade-in-right" style="animation-delay: 0.4s;">
+                    <div class="feature-card hover-lift">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-center mb-3">100% Anti-Ban</h3>
+                        <p class="text-center">
+                            Sistema de disfarce indetectável. Jogue com segurança total, 
+                            sem risco de banimento ou blacklist. Garantia de proteção.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Premium Carousel -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="display-3 text-center mb-5 fade-in-up">
+                O Que Nossos <span class="neon-primary">Clientes VIP</span> Dizem
+            </h2>
+            
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="testimonial-card">
+                                    <img src="imgs/pvsocial (6).jpg" alt="Depoimento Cliente" class="img-fluid rounded">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star" style="--i: 1;"></i>
+                                        <i class="fas fa-star" style="--i: 2;"></i>
+                                        <i class="fas fa-star" style="--i: 3;"></i>
+                                        <i class="fas fa-star" style="--i: 4;"></i>
+                                        <i class="fas fa-star" style="--i: 5;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="testimonial-card">
+                                    <img src="imgs/pvsocial (2).jpg" alt="Depoimento Cliente" class="img-fluid rounded">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star" style="--i: 1;"></i>
+                                        <i class="fas fa-star" style="--i: 2;"></i>
+                                        <i class="fas fa-star" style="--i: 3;"></i>
+                                        <i class="fas fa-star" style="--i: 4;"></i>
+                                        <i class="fas fa-star" style="--i: 5;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="testimonial-card">
+                                    <img src="imgs/prova social 03.PNG" alt="Depoimento Cliente" class="img-fluid rounded">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star" style="--i: 1;"></i>
+                                        <i class="fas fa-star" style="--i: 2;"></i>
+                                        <i class="fas fa-star" style="--i: 3;"></i>
+                                        <i class="fas fa-star" style="--i: 4;"></i>
+                                        <i class="fas fa-star" style="--i: 5;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Urgência Premium -->
     <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-11 col-lg-3 mt-3 rounded-4">
-                <div class="card p-3">
-                    <img src="imgs/trofeu.png" class="card-img-top" alt="Troféu - Vencer">
-                    <div class="card-body">
-                         <h5 class="card-title" style="color: #ffffff;">Vença Todas as Partidas</h5>
-                        <p class="card-text" style="color: #ffffff;">Com o XIT, sua mira se ajusta automaticamente para garantir Full capa em
-                            cada confronto Tenha sua Mira com 100% de Precisão.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-11 col-lg-3 mt-3">
-                <div class="card p-3 rounded-4">
-                    <img src="imgs/controle.png" class="card-img-top" alt="Controle - Jogabilidade">
-                    <div class="card-body border-4">
-                        <h5 class="card-title" style="color: #ffffff;">Jogabilidade Profissional</h5>
-                        <p class="card-text" style="color: #ffffff;">Depois de ativar a 2x automática... Já era! Sua mira 2x vai virar uma máquina CAPA. Não
-                            importa a distância, ela sempre vai seguir cabeça.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-11 col-lg-3 mt-3">
-                <div class="card p-3 rounded-4">
-                    <img src="imgs/velocimetro.png" class="card-img-top" alt="Velocímetro - Desempenho">
-                    <div class="card-body">
-                        <h5 class="card-title" style="color: #ffffff;">Desempenho Turbinado</h5>
-                        <p class="card-text" style="color: #ffffff;">Tenha resposta rápida e performance máxima mesmo em partidas ranqueadas
-                            intensas.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-center p-3 mt-2">
-    <h1 class="display-2" style="color: #ffffff;"> 
-        Veja abaixo alguns
-        <span class="neon-red">
-            FeedBacks de clientes
-        </span>
-    </h1>
-</div>
-
-<div id="carouselDepoimentos" class="carousel slide container py-5" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <!-- Primeiro depoimento -->
-        <div class="carousel-item active">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/pvsocial (6).jpg" alt="Depoimento 1" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Segundo depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/pvsocial (2).jpg" alt="Depoimento 2" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Terceiro depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/prova social 03.PNG" alt="Depoimento 3" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quarto depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/pvsocial (4).jpg" alt="Depoimento 4" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quinto depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/pvsocial (5).jpg" alt="Depoimento 5" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sexto depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/prova social 04.PNG" alt="Depoimento 6" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sétimo depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/prova social 01.jpg" alt="Depoimento 7" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Oitavo depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/prova social 02.JPG" alt="Depoimento 8" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nono depoimento -->
-        <div class="carousel-item">
-            <div class="d-flex justify-content-center">
-                <div class="card text-white text-center p-4 rounded-4"
-                    style="background-color: #121212; width: 90%; max-width: 400px;">
-                    <img src="imgs/prova social 05.jpg" alt="Depoimento 9" class="img-fluid">
-                    <div class="mb-2 mt-2">
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                        <i class="bi bi-star-fill star-green"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselDepoimentos" data-bs-slide="next">
-        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
-        <span class="visually-hidden">Próximo</span>
-    </button>
-</div>
-
-    <!-- SEÇÃO DE URGÊNCIA E RAPTO EMOCIONAL -->
-    <div class="container my-5">
-        <div class="urgencia-section">
-            <div class="urgencia-content text-center">
-                <h2 class="display-4 mb-4" style="color: #ff4757;">
-                    ⚠️ PARE TUDO QUE VOCÊ ESTÁ FAZENDO! ⚠️
+        <div class="urgency-section fade-in-up">
+            <div class="urgency-content">
+                <h2 class="display-4 mb-4 neon-danger">
+                    ⚠️ ATENÇÃO: OFERTA EXPIRANDO! ⚠️
                 </h2>
-                <p class="fs-4 mb-4" style="color: #ffffff;">
-                    <strong>Enquanto você lê isso, MILHARES de players já estão dominando o Free Fire com o Painel VIP...</strong>
+                <p class="fs-3 mb-4">
+                    <strong>Enquanto você hesita, seus rivais já estão dominando com nosso painel...</strong>
                 </p>
-                <div class="timer-urgencia mb-4">
-                    ⏰ OFERTA EXPIRA EM: <span id="countdown">23:59:47</span>
+                <div class="countdown-timer">
+                    ⏰ RESTAM APENAS: <span id="countdownTimer">23:47:32</span>
                 </div>
-                <p class="fs-5 mb-4" style="color: #ffffff;">
-                    A cada segundo que passa, você está perdendo a chance de ter a <span class="neon-red">MIRA PERFEITA</span> que seus adversários já têm. 
-                    <strong>Eles estão dominando enquanto você fica para trás!</strong>
+                <p class="fs-4 mb-4">
+                    Cada segundo que passa é uma oportunidade perdida de ter a <span class="neon-primary">MIRA PERFEITA</span> 
+                    que seus adversários já possuem. <strong>Não fique para trás!</strong>
                 </p>
-                <p class="fs-6 mb-4" style="color: #ffffff;">
-                    <em>"Imagina como você vai se sentir amanhã, sabendo que poderia ter o melhor XIT do Brasil nas suas mãos HOJE, 
-                    mas deixou passar..."</em>
+                <p class="fs-5 text-center">
+                    <em>"Como você vai se sentir amanhã, sabendo que poderia ter o melhor XIT do Brasil 
+                    nas suas mãos HOJE, mas deixou escapar?"</em>
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- SEÇÃO DE PROVA SOCIAL (EFEITO BANDWAGON) -->
-    <div class="container my-5">
-        <div class="prova-social-box text-center">
-            <h3 class="mb-4">🔥 MAIS DE 10.000 PLAYERS JÁ ESCOLHERAM O PAINEL VIP! 🔥</h3>
-            <p class="fs-5 mb-3">
-                <strong>Os melhores players do Free Fire já descobriram o segredo!</strong>
-            </p>
-            <p class="fs-6 mb-3">
-                ✅ <strong>8.743 players</strong> compraram nas últimas 48h<br>
-                ✅ <strong>94% de aprovação</strong> entre usuários VIP<br>
-                ✅ <strong>+2.000 novos usuários</strong> só hoje!
-            </p>
-            <p class="fs-5 mb-0">
+    <!-- Prova Social Premium -->
+    <div class="container">
+        <div class="social-proof fade-in-up">
+            <h3 class="display-5 mb-4">
+                🔥 MAIS DE 10.000 PLAYERS JÁ ESCOLHERAM O PAINEL VIP! 🔥
+            </h3>
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <h4 class="display-6">12.847</h4>
+                    <p>Clientes satisfeitos</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h4 class="display-6">98.7%</h4>
+                    <p>Taxa de aprovação</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h4 class="display-6">24/7</h4>
+                    <p>Suporte especializado</p>
+                </div>
+            </div>
+            <p class="fs-4 mt-4">
                 <strong>"Se você não está usando o Painel VIP, seus adversários estão levando vantagem sobre você!"</strong>
             </p>
         </div>
     </div>
 
-    <!-- Seção de benefícios e pacotes -->
-    <section id="beneficios" class="beneficios">
-        <div class="container text-center my-5">
-            <h1 class="display-2" style="color: #ffffff;">
-                <span style="color: #ffffff;">ADQUIRA AGORA O SEU</span><br>
-                <span style="color: #ffffff;">Seu painel <span class="neon-red">VIP</span></span>
-            </h1>
+    <!-- Pacotes Premium -->
+    <section id="pacotes" class="py-5">
+        <div class="container">
+            <h2 class="display-2 text-center mb-5 fade-in-up">
+                Escolha Seu <span class="neon-primary">Painel VIP</span>
+            </h2>
             
-            <!-- Pacote Android -->
-            <div class="card pacote-card p-4 rounded-4 shadow-lg mx-auto mb-5" style="max-width: 350px; background-color: #121212;">
-                <div class="text-center mb-3">
-                    <img src="imgs/android.png" class="img-fluid rounded w-50" alt="Painel XIT Android" />
+            <div class="row g-4 justify-content-center">
+                <!-- Painel Android -->
+                <div class="col-lg-4 fade-in-left">
+                    <div class="package-card">
+                        <img src="imgs/android.png" alt="Android" class="package-image">
+                        
+                        <h3 class="package-title text-center">XIT ANDROID</h3>
+                        <p class="text-center text-muted mb-4">
+                            O painel mais avançado para Android
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Painel Mod Menu FFH4X</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Função HS pescoço + Bypass</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Mira automática 100% capa</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> 2x Automática</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Rastreamento de cabeça</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> UMP AUTOMÁTICA</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Aimbot Cabeça</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Disfarce 100% indetectável</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Anti-Ban garantido</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Sensi VIP Full capa</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Tutorial completo</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Suporte 24h exclusivo</li>
+                        </ul>
+                        
+                        <div class="price-section">
+                            <div class="old-price">De R$ 147,90</div>
+                            <div class="current-price">R$ 29,90</div>
+                            <a href="https://go.pepperpay.com.br/6ztdj" class="cta-premium w-100">
+                                🛒 COMPRAR AGORA!
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <h1 class="mb-3 text-center" style="font-size: 2rem; color: #00cc00;">
-                    <span class="neon-vermelho">XIT</span> <span class="neon-red">ANDROID</span>
-                </h1>
-                <p class="mb-3" style="font-size: 0.8rem; color: #ffffff;">Melhor <span class="neon-vermelho">XIT</span> para seu ANDROID</p>
-                <hr style="border-color: #00ff00;">
-                
-                <ul class="lista-beneficios mb-4" style="list-style: none; padding-left: 0; text-align: left;">
-                     <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Painel Mod Menu FFH4X</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Função HS pescoço + Bypass</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Mira automática 100% capa</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> 2x Automática</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Rastreamento de cabeça</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> UMP AUTOMÁTICA</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aimbot Cabeça</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Disfarce 100% indetectável</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Com disfarçe pra não leva Ban!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Sensi VIP Full capa</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aim Regedit</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 2x Aimbot</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> HeadShot</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Mira que gruda</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Tutorial de instalação</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Instalação fácil e rápida</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 100% ANTI-BAN!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 100% ANTI-BLACKLIST!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Nosso Whatsapp Oficial Como seu Suporte pessoal</li>
-                </ul>
-                
-                <div class="preco text-center mb-2">
-                      <h3 class="fs-6 text-decoration-line-through mb-1"
-                style="color: red !important; font-size: 30px !important;"> De 147,90 </h3> <span style="color: #ffffff;">Por apenas</span> <br>
-                            <span class="neon-red fw-bold" style="font-size:2.5rem; text-shadow:0 0 1px #00ff00,0 0 1px #00ff00;">R$29,90</span>
-                    <br><br>
-                    <a href="https://go.pepperpay.com.br/6ztdj" class="btn-super-neon">
-                        <i class="bi bi-cart-fill me-2"></i> COMPRAR COM DESCONTO!
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Pacote iPhone -->
-            <div class="card pacote-card p-4 rounded-4 shadow-lg mx-auto mb-5" style="max-width: 350px; background-color: #121212;">
-                <div class="text-center mb-3">
-                    <img src="imgs/iphone.png" class="img-fluid rounded w-50" alt="Painel XIT iPhone" />
+                <!-- Painel iPhone -->
+                <div class="col-lg-4 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="package-card">
+                        <img src="imgs/iphone.png" alt="iPhone" class="package-image">
+                        
+                        <h3 class="package-title text-center">XIT IPHONE</h3>
+                        <p class="text-center text-muted mb-4">
+                            Poder total para dispositivos iOS
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Painel Mod Menu FFH4X</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Função HS pescoço + Bypass</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Mira automática 100% capa</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> 2x Automática</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Rastreamento de cabeça</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> UMP AUTOMÁTICA</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Aimbot Cabeça</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Disfarce indetectável</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Anti-Ban + Anti-Blacklist</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Sensi VIP exclusiva</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Instalação simplificada</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Suporte especializado</li>
+                        </ul>
+                        
+                        <div class="price-section">
+                            <div class="old-price">De R$ 147,90</div>
+                            <div class="current-price">R$ 29,90</div>
+                            <a href="https://go.pepperpay.com.br/1xm07" class="cta-premium w-100">
+                                🛒 COMPRAR AGORA!
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <h1 class="mb-3 text-center" style="font-size: 2rem; color: #00cc00;">
-                    <span class="neon-vermelho">XIT</span> <span class="neon-red">IPHONE/iOS</span>
-                </h1>
-                <p class="mb-3" style="font-size: 0.8rem; color: #ffffff;">Melhor <span class="neon-vermelho">XIT</span> para seu iPhone/iOS</p>
-                <hr style="border-color: #00ff00;">
-                
-                <ul class="lista-beneficios mb-4" style="list-style: none; padding-left: 0; text-align: left;">
-                     <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Painel Mod Menu FFH4X</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Função HS pescoço + Bypass</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Mira automática 100% capa</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> 2x Automática</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Rastreamento de cabeça</li>
-                    <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> UMP AUTOMÁTICA</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aimbot Cabeça</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> UMP AUTOMÁTICA</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Disfarce 100% indetectável</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Com disfarçe pra não leva Ban!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Sensi VIP Full capa</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aim Regedit</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 2x Aimbot</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> HeadShot</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Mira que gruda</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Tutorial de instalação</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Instalação fácil e rápida</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 100% ANTI-BAN!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 100% ANTI-BLACKLIST!</li>
-                    <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Nosso Whatsapp Oficial Como seu Suporte pessoal</li>
-                </ul>
-                
-                    <div class="preco text-center mb-2">
-                      <h3 class="fs-6 text-decoration-line-through mb-1"
-                style="color: red !important; font-size: 30px !important;"> De 147,90 </h3> <span style="color: #ffffff;">Por apenas</span> <br>
-                            <span class="neon-red fw-bold" style="font-size:2.5rem; text-shadow:0 0 1px #00ff00,0 0 1px #00ff00;">R$29,90</span>
-                    <br><br>
-                    <a href="https://go.pepperpay.com.br/1xm07" class="btn-super-neon">
-                        <i class="bi bi-cart-fill me-2"></i> COMPRAR COM DESCONTO!
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Pacote CLT VIP -->
-            <div class="card pacote-card p-4 rounded-4 shadow-lg mx-auto mb-5" style="max-width: 350px; background-color: #121212;">
-                <div class="text-center mb-3">
-                    <img src="imgs/CLT.jpg" class="img-fluid rounded w-60" alt="Painel CLT VIP" />
-                </div>
-                
-                <h1 class="display-2 text-center" style="color: #ffffff;">
-                    Painel CLT <span class="neon-red">VIP</span>
-                </h1>
-                
-                <p class="mb-3 text-center" style="font-size: 0.8rem; color: #ffffff;">
-                    Melhor Painel CLT para Android e iPhone/iOS
-                </p>
-                <hr style="border-color: #00ff00;">
-                
-                <ul class="lista-beneficios mb-4" style="list-style: none; padding-left: 0; text-align: left;">
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Painel CLT Premium</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Função HS pescoço + Bypass</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Acesso Permanente ao Painel</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> 2x Xitada + 2x Automática</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Rastreamento pra cabeça</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> No Recoil (não espalha tiro)</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> UMP automática</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Mira automática Full capa</li>
-            <li style="color: #ff6b35;"><i class="fa-solid fa-fire-flame-curved"></i> Rastreamento de mira aberta</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 2x Aimbot</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aimbot Cabeça</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Disfarce indetectável</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Com disfarçe pra não leva Ban!</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aim Regedit</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Aim Lock</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> HeadShot</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Sensi VIP Full Capa</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Mira que Gruda</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Tutorial de instalação</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Instalação fácil e rápida</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> 100% ANTI-BAN e ANTI-BLACKLIST</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Bônus Extras: Acesso a todas ferramentas</li>
-            <li style="color: #ffffff;"><i class="bi bi-check-circle-fill star-green"></i> Suporte Exclusivo por 24h nosso WhatsApp Oficial</li>
-          </ul>
-                
-                  <div class="preco text-center mb-2">
-                      <h3 class="fs-6 text-decoration-line-through mb-1"
-                style="color: red !important; font-size: 30px !important;">De 214,97</h3> <span style="color: #ffffff;">Por apenas</span> <br>
-                            <span class="neon-red fw-bold" style="font-size:2.5rem; text-shadow:0 0 1px #00ff00,0 0 1px #00ff00;">R$49,97</span><br>
-                    <br>
-                    <a href="https://go.pepperpay.com.br/n9oz4" class="btn-super-neon">
-                        <i class="bi bi-cart-fill me-2"></i> COMPRAR COM DESCONTO!
-                    </a>
+                <!-- Painel CLT VIP -->
+                <div class="col-lg-4 fade-in-right" style="animation-delay: 0.4s;">
+                    <div class="package-card" style="border-color: var(--accent-secondary);">
+                        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--gradient-primary); color: #000; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">
+                            MAIS VENDIDO
+                        </div>
+                        
+                        <img src="imgs/CLT.jpg" alt="CLT VIP" class="package-image">
+                        
+                        <h3 class="package-title text-center">CLT VIP</h3>
+                        <p class="text-center text-muted mb-4">
+                            O painel definitivo - Android + iPhone
+                        </p>
+                        
+                        <ul class="features-list">
+                            <li><i class="fas fa-crown" style="color: #ffd700;"></i> Painel CLT Premium</li>
+                            <li><i class="fas fa-crown" style="color: #ffd700;"></i> Acesso permanente</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> 2x Xitada + 2x Automática</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> Rastreamento avançado</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> No Recoil (zero dispersão)</li>
+                            <li><i class="fas fa-fire" style="color: var(--accent-danger);"></i> UMP automática premium</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Mira automática Full capa</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Disfarce militar</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Proteção total anti-ban</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Sensi VIP exclusiva</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Suporte VIP 24h</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-primary);"></i> Atualizações vitalícias</li>
+                        </ul>
+                        
+                        <div class="price-section">
+                            <div class="old-price">De R$ 214,97</div>
+                            <div class="current-price">R$ 49,97</div>
+                            <a href="https://go.pepperpay.com.br/n9oz4" class="cta-premium w-100">
+                                👑 QUERO SER VIP!
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE GARANTIA TOTAL (INVERSÃO DE RISCO) -->
-    <div class="container my-5">
-        <div class="garantia-box text-center">
-            <h2 class="display-5 mb-4" style="color: #ffffff; margin-top: 20px;">
+    <!-- Garantia Premium -->
+    <div class="container">
+        <div class="guarantee-section fade-in-up">
+            <h2 class="display-4 mb-4" style="margin-top: 30px;">
                 🛡️ GARANTIA BLINDADA DE RISCO ZERO! 🛡️
             </h2>
-            <p class="fs-4 mb-4" style="color: #ffffff;">
-                <strong>EU ASSUMO TODO O RISCO PRA VOCÊ!</strong>
+            <p class="fs-3 mb-4">
+                <strong>EU ASSUMO TODO O RISCO PARA VOCÊ!</strong>
             </p>
-            <p class="fs-5 mb-3" style="color: #ffffff;">
-                ✅ <strong>7 DIAS DE GARANTIA TOTAL</strong> - Não funcionou? Devolvemos 100% do seu dinheiro!<br>
-                ✅ <strong>SUPORTE 24H EXCLUSIVO</strong> - Qualquer problema, resolvemos na hora!<br>
-                ✅ <strong>INSTALAÇÃO GARANTIDA</strong> - Se não conseguir instalar, fazemos pra você!<br>
-                ✅ <strong>ANTI-BAN GARANTIDO</strong> - Levou ban? Reembolsamos tudo!
-            </p>
-            <p class="fs-4 mb-4" style="color: #ffffff;">
+            <div class="row text-center">
+                <div class="col-md-6 mb-3">
+                    <h5>✅ 7 DIAS DE GARANTIA TOTAL</h5>
+                    <p>Não funcionou? Devolvemos 100% do seu dinheiro!</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>✅ SUPORTE 24H EXCLUSIVO</h5>
+                    <p>Qualquer problema, resolvemos na hora!</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>✅ INSTALAÇÃO GARANTIDA</h5>
+                    <p>Se não conseguir instalar, fazemos para você!</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>✅ ANTI-BAN GARANTIDO</h5>
+                    <p>Levou ban? Reembolsamos tudo!</p>
+                </div>
+            </div>
+            <p class="fs-4 mt-4">
                 <strong>"Se por qualquer motivo você não ficar 100% satisfeito, 
                 devolvemos seu dinheiro sem perguntas e sem enrolação!"</strong>
             </p>
-            <p class="fs-6 mb-0" style="color: #ffffff;">
-                <em>O risco é TODO MEU. A vitória é TODA SUA!</em>
-            </p>
         </div>
     </div>
 
-    <!-- Garantia -->
-    <div class="container py-5">
-        <div class="row align-items-center justify-content-center text-white text-center">
-            <div class="col-12 col-md-4 mb-4">
-                <img src="imgs/garantia.webp" alt="Garantia" class="img-fluid" style="max-width: 200px;">
-            </div>
-            <div class="col-12 col-md-6">
-                <h4 class="mb-3" style="color: #ffffff;">Garantia de Satisfação</h4>
-                <p class="fs-5" style="color: #ffffff;">
-                    Você tem <strong>7 dias de garantia</strong> para testar tudo sem compromisso. Se não ficar satisfeito,
-                    seu dinheiro de volta sem perguntas até 7 dias após a compra.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Nova seção Neo Vender -->
-    <div class="container my-5">
-        <h2 class="text-center mb-4 neon-red" style="font-family: 'Bebas Neue', cursive;">Grupo Exclisivo da New</h2>
-        <div class="row justify-content-center">
-            <div class="col-11 col-md-4 mb-4">
-                <div class="card p-3 bg-dark text-white rounded-4 shadow-lg">
-                    <div class="d-flex justify-content-center mb-3">
-                        <img src="imgs/logo new sensi.jpg" alt="Neo Vender" class="img-fluid rounded w-50" />
-                    </div>
-                    <h3 class="text-center mb-3" style="font-family: 'Bebas Neue', cursive; color: #ffffff;">New Sensi</h3>
-                    <p class="text-center" style="color: #ffffff;">
-                        Grupo exclusivo da new, fique por dentro das novidades e atualizações futuras
-                    </p>
-                    <div class="text-center mt-3">
-                        <a href="https://t.me/+yKuBpvqPaBU5MGMx" target="_blank" rel="noopener noreferrer" 
-                           class="btn btn-success fw-bold" style="border-radius:30px;">Entrar Agora</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="container py-5" id="faq">
-        <h2 class="text-center mb-4 neon-red" style="font-family: 'Bebas Neue', cursive;">
-            Perguntas Frequentes (FAQ)
-        </h2>
-        <div class="accordion accordion-flush" id="faqAccordion">
-            <!-- PERGUNTA 2 -->
-            <div class="accordion-item" style="background-color: #121212; color: white;">
-                <h2 class="accordion-header" id="faq2">
-                    <button class="accordion-button collapsed bg-dark text-white" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false"
-                        aria-controls="faqCollapse2" style="color: #ffffff !important;">
-                        COMO FUNCIONA O PRAZO DE GARANTIA?
-                    </button>
-                </h2>
-                <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body" style="color: #ffffff !important;">
-                        Você tem até <strong>7 dias de Garantia</strong> para pedir o reembolso integral se não ficar
-                        satisfeito com o produto.
-                    </div>
-                </div>
-            </div>
-
-            <!-- PERGUNTA 3 -->
-            <div class="accordion-item" style="background-color: #121212; color: white;">
-                <h2 class="accordion-header" id="faq3">
-                    <button class="accordion-button collapsed bg-dark text-white" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false"
-                        aria-controls="faqCollapse3" style="color: #ffffff !important;">
-                        COMO VOU RECEBER O MEU PRODUTO?
-                    </button>
-                </h2>
-                <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faq3"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body" style="color: #ffffff !important;">
-                        Assim que o pagamento for confirmado, você receberá automaticamente por e-mail (Gmail).
-                        <br><strong>Pagou, recebeu!</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PERGUNTA 4 -->
-            <div class="accordion-item" style="background-color: #121212; color: white;">
-                <h2 class="accordion-header" id="faq4">
-                    <button class="accordion-button collapsed bg-dark text-white" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false"
-                        aria-controls="faqCollapse4" style="color: #ffffff !important;">
-                        COMO ACESSAR O PRODUTO?
-                    </button>
-                </h2>
-                <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faq4"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body" style="color: #ffffff !important;">
-                        Você receberá acesso por e-mail. Também pode acessar pelo site oficial da plataforma:
-                        <ol class="mt-2">
-                            <li>Faça login na plataforma clicando em <strong>'Entrar'</strong></li>
-                            <li>No menu lateral, clique em <strong>'Minha conta'</strong></li>
-                            <li>Depois em <strong>'Minhas compras'</strong> — lá estarão todos os seus produtos!</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PERGUNTA 5 -->
-            <div class="accordion-item" style="background-color: #121212; color: white;">
-                <h2 class="accordion-header" id="faq5">
-                    <button class="accordion-button collapsed bg-dark text-white" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false"
-                        aria-controls="faqCollapse5" style="color: #ffffff !important;">
-                        ENSINAM COMO INSTALAR?
-                    </button>
-                </h2>
-                <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faq5"
-                    data-bs-parent="#faqAccordion">
-                    <div class="accordion-body" style="color: #ffffff !important;">
-                        A instalação é super simples! Após a compra, você receberá um link de <strong>download</strong> e instruções passo a
-                        passo. O processo leva menos de <strong>5 minutos</strong> e funciona em qualquer dispositivo.<br>
-                        E para qualquer dúvida que seja estarei à disposição para ajudar<br> 
-                        Ao adquirir o produto você recebe na hora um suporte especial no zap e instagram.<br>
-                        Atendimento especializado <strong>exclusivo</strong> para <strong>clientes</strong> disponível 24 horas por dia<br> 
-                        para atender qualquer necessidade.<br> <strong>Suporte especial para auxiliar na instalação</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer text-center mt-5">
+    <!-- Comunidade Premium -->
+    <section class="py-5">
         <div class="container">
-            <p style="color: #ffffff;">&copy; 2025 New Sensi. Todos os direitos reservados.</p>
-            <p style="color: #ffffff;">Instagram Oficial: <a href="https://instagram.com/new.sensi.ff" target="_blank" style="color:#00e676;">@new.sensi.ff</a></p>
-            <p style="color: #ffffff;">Desenvolvido por <strong>New sensi</strong></p>
+            <h2 class="display-3 text-center mb-5 fade-in-up">
+                Junte-se à <span class="neon-primary">Comunidade VIP</span>
+            </h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 fade-in-up">
+                    <div class="feature-card text-center hover-glow">
+                        <img src="imgs/logo new sensi.jpg" alt="New Sensi Community" class="package-image">
+                        <h3 class="mb-3">Grupo Exclusivo New Sensi</h3>
+                        <p class="mb-4">
+                            Acesso VIP às novidades, atualizações exclusivas e suporte direto 
+                            da nossa equipe especializada.
+                        </p>
+                        <a href="https://t.me/+yKuBpvqPaBU5MGMx" target="_blank" 
+                           class="cta-premium">
+                            📱 ENTRAR NO GRUPO VIP
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Premium -->
+    <section class="py-5" id="faq">
+        <div class="container">
+            <div class="faq-section fade-in-up">
+                <h2 class="display-3 text-center mb-5">
+                    Perguntas <span class="neon-primary">Frequentes</span>
+                </h2>
+                
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                COMO FUNCIONA O PRAZO DE GARANTIA?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Você tem até <strong>7 dias completos</strong> para testar nosso painel. 
+                                Se não ficar 100% satisfeito, devolvemos seu dinheiro integral, 
+                                sem perguntas e sem burocracia.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                COMO RECEBO O PRODUTO APÓS A COMPRA?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <strong>Entrega instantânea!</strong> Assim que o pagamento for confirmado, 
+                                você recebe automaticamente por email todos os arquivos e instruções. 
+                                Pagou, recebeu na hora!
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                É DIFÍCIL DE INSTALAR?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <strong>Super simples!</strong> A instalação leva menos de 5 minutos. 
+                                Incluímos tutorial passo a passo em vídeo e nosso suporte especializado 
+                                24h para ajudar em qualquer dúvida. Se não conseguir, instalamos para você!
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                REALMENTE NÃO VOU LEVAR BAN?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <strong>100% garantido!</strong> Nosso sistema de disfarce é militar, 
+                                indetectável pelos sistemas anti-cheat. Mais de 10.000 clientes usando 
+                                sem problemas. Se levar ban, reembolsamos tudo!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="py-5" style="background: var(--secondary-bg); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2025 New Sensi. Todos os direitos reservados.</p>
+            <p class="mb-2">
+                Instagram Oficial: 
+                <a href="https://instagram.com/new.sensi.ff" target="_blank" class="neon-primary">@new.sensi.ff</a>
+            </p>
+            <p class="text-muted">Desenvolvido com excelência por <strong>New Sensi</strong></p>
         </div>
     </footer>
 
@@ -1184,111 +1455,35 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Sistema de notificações corrigido -->
+    <!-- Sistema Premium de Notificações e Interações -->
     <script>
-        // Sistema de notificações funcionais
-        class NotificationSystem {
+        class PremiumNotificationSystem {
             constructor() {
-                this.salesCounter = document.getElementById('sales-count');
-                this.notificationContainer = document.getElementById('notification-container');
-                this.simpleNotificationContainer = document.getElementById('notificacoes');
-                this.currentSales = 127;
-                this.userCounter = 476;
+                this.salesCounter = document.getElementById('salesCount');
+                this.userCounter = document.getElementById('userCounter');
+                this.notificationContainer = document.getElementById('notificationContainer');
+                this.countdownTimer = document.getElementById('countdownTimer');
+                
+                this.currentSales = 247;
+                this.currentUsers = 1247;
                 
                 this.init();
             }
             
             init() {
-                // Inicializar contadores
-                this.updateUserCounter();
-                this.startNotificationLoop();
-                this.startSalesCounterUpdate();
                 this.startCountdown();
+                this.startNotificationSystem();
+                this.startCounterUpdates();
                 this.initDraggableCounter();
+                this.initScrollAnimations();
+                this.initMicroInteractions();
             }
             
-            // Tornar o contador de vendas arrastável
-            initDraggableCounter() {
-                const salesCounterElement = document.getElementById('salesCounter');
-                let isDragging = false;
-                let currentX;
-                let currentY;
-                let initialX;
-                let initialY;
-                let xOffset = 0;
-                let yOffset = 0;
-
-                salesCounterElement.addEventListener('mousedown', dragStart);
-                document.addEventListener('mousemove', dragMove);
-                document.addEventListener('mouseup', dragEnd);
-
-                // Touch events para dispositivos móveis
-                salesCounterElement.addEventListener('touchstart', dragStart);
-                document.addEventListener('touchmove', dragMove);
-                document.addEventListener('touchend', dragEnd);
-
-                function dragStart(e) {
-                    if (e.type === "touchstart") {
-                        initialX = e.touches[0].clientX - xOffset;
-                        initialY = e.touches[0].clientY - yOffset;
-                    } else {
-                        initialX = e.clientX - xOffset;
-                        initialY = e.clientY - yOffset;
-                    }
-
-                    if (e.target === salesCounterElement) {
-                        isDragging = true;
-                        salesCounterElement.classList.add('dragging');
-                    }
-                }
-
-                function dragMove(e) {
-                    if (isDragging) {
-                        e.preventDefault();
-                        
-                        if (e.type === "touchmove") {
-                            currentX = e.touches[0].clientX - initialX;
-                            currentY = e.touches[0].clientY - initialY;
-                        } else {
-                            currentX = e.clientX - initialX;
-                            currentY = e.clientY - initialY;
-                        }
-
-                        xOffset = currentX;
-                        yOffset = currentY;
-
-                        // Limitar dentro da viewport
-                        const rect = salesCounterElement.getBoundingClientRect();
-                        const maxX = window.innerWidth - rect.width;
-                        const maxY = window.innerHeight - rect.height;
-
-                        xOffset = Math.max(0, Math.min(xOffset, maxX));
-                        yOffset = Math.max(0, Math.min(yOffset, maxY));
-
-                        salesCounterElement.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-                        salesCounterElement.style.position = 'fixed';
-                        salesCounterElement.style.top = '20px';
-                        salesCounterElement.style.right = 'auto';
-                        salesCounterElement.style.left = '20px';
-                    }
-                }
-
-                function dragEnd() {
-                    if (isDragging) {
-                        isDragging = false;
-                        salesCounterElement.classList.remove('dragging');
-                    }
-                }
-            }
-            
-            // Contador regressivo para urgência
+            // Sistema de countdown premium
             startCountdown() {
-                const countdownElement = document.getElementById('countdown');
-                if (!countdownElement) return;
-                
                 let hours = 23;
-                let minutes = 59;
-                let seconds = 47;
+                let minutes = 47;
+                let seconds = 32;
                 
                 const updateCountdown = () => {
                     if (seconds > 0) {
@@ -1301,108 +1496,118 @@
                         minutes = 59;
                         seconds = 59;
                     } else {
-                        // Reset para manter sempre ativo
                         hours = 23;
                         minutes = 59;
-                        seconds = 47;
+                        seconds = 59;
                     }
                     
-                    const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    countdownElement.textContent = formattedTime;
+                    const time = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    if (this.countdownTimer) {
+                        this.countdownTimer.textContent = time;
+                    }
                 };
                 
                 setInterval(updateCountdown, 1000);
             }
             
-            // Atualizar contador de usuários ativos
-            updateUserCounter() {
-                const userElement = document.getElementById('contador-pessoas');
-                if (userElement) {
-                    const increase = Math.floor(Math.random() * 5) + 1;
-                    this.userCounter += increase;
-                    userElement.textContent = this.userCounter;
+            // Contador arrastável premium
+            initDraggableCounter() {
+                const counter = document.getElementById('salesCounterMobile');
+                if (!counter) return;
+                
+                let isDragging = false;
+                let currentX, currentY, initialX, initialY;
+                let xOffset = 0, yOffset = 0;
+
+                const dragStart = (e) => {
+                    const clientX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+                    const clientY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
                     
-                    // Próxima atualização em 2-5 segundos
-                    const nextUpdate = Math.floor(Math.random() * 3000) + 2000;
-                    setTimeout(() => this.updateUserCounter(), nextUpdate);
-                }
+                    initialX = clientX - xOffset;
+                    initialY = clientY - yOffset;
+
+                    if (e.target === counter || counter.contains(e.target)) {
+                        isDragging = true;
+                        counter.classList.add('dragging');
+                    }
+                };
+
+                const dragMove = (e) => {
+                    if (isDragging) {
+                        e.preventDefault();
+                        
+                        const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+                        const clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
+                        
+                        currentX = clientX - initialX;
+                        currentY = clientY - initialY;
+
+                        xOffset = currentX;
+                        yOffset = currentY;
+
+                        // Limitar dentro da viewport
+                        const rect = counter.getBoundingClientRect();
+                        const maxX = window.innerWidth - rect.width;
+                        const maxY = window.innerHeight - rect.height;
+
+                        xOffset = Math.max(0, Math.min(xOffset, maxX));
+                        yOffset = Math.max(0, Math.min(yOffset, maxY));
+
+                        counter.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                        counter.style.position = 'fixed';
+                        counter.style.top = '20px';
+                        counter.style.right = 'auto';
+                        counter.style.left = '20px';
+                    }
+                };
+
+                const dragEnd = () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        counter.classList.remove('dragging');
+                    }
+                };
+
+                // Mouse events
+                counter.addEventListener('mousedown', dragStart);
+                document.addEventListener('mousemove', dragMove);
+                document.addEventListener('mouseup', dragEnd);
+
+                // Touch events
+                counter.addEventListener('touchstart', dragStart, { passive: false });
+                document.addEventListener('touchmove', dragMove, { passive: false });
+                document.addEventListener('touchend', dragEnd);
             }
             
-            // Atualizar contador de vendas
-            updateSalesCounter() {
-                if (this.salesCounter) {
-                    const increase = Math.floor(Math.random() * 3) + 1;
-                    this.currentSales += increase;
-                    this.salesCounter.textContent = this.currentSales;
-                }
-            }
-            
-            // Sistema de notificações simples
-            showSimpleNotification() {
+            // Sistema de notificações premium
+            showPremiumNotification() {
                 const names = [
-                    "Fabinho", "Adriano", "Arthur", "Marcos", "Isabelle", "Bella", "Ana", "Vitor", 
-                    "Rafael", "Matheus", "Juliana", "Rafaela", "Kauane", "João Silva", "Maria Santos", 
-                    "Pedro Oliveira", "Ana Costa", "Carlos Souza", "Fernanda Lima", "Gabriel Alves",
-                    "Juliana Ferreira", "Rafael Martins", "Camila Rocha", "Lucas Pereira", "Beatriz Carvalho",
-                    "Thiago Ribeiro", "Larissa Gomes", "Felipe Barbosa", "Mariana Dias", "Bruno Nascimento",
-                    "Isabella", "Diego Araújo", "Amanda", "Mateus Teixeira", "Natália Monteiro",
-                    "Vinicius Castro", "Letícia", "André Fonseca", "Bruna Cavalcanti", "Guilherme Pinto",
-                    "Yasmin Nunes", "Leonardo Freitas", "Stephanie Ramos"
+                    "Gabriel Silva", "Mariana Costa", "Pedro Oliveira", "Ana Santos", "Carlos Souza",
+                    "Fernanda Lima", "Rafael Alves", "Juliana Ferreira", "Lucas Martins", "Camila Rocha",
+                    "Thiago Pereira", "Beatriz Carvalho", "Felipe Ribeiro", "Larissa Gomes", "Bruno Barbosa",
+                    "Isabella Dias", "Diego Nascimento", "Amanda Araújo", "Mateus Castro", "Natália Teixeira"
                 ];
                 
-                const actions = [
-                    "Aproveitou a Promoção",
-                    "Comprou Painel XIT",
-                    "Acabou de adquirir Painel CLT",
-                    "Realizou uma Compra de R$49,90",
-                    "Realizou uma Compra de R$29,90",
-                    "Confirmou o Pagamento de R$29,90",
-                    "Usou CUPOM: New Xiter"
-                ];
-                
-                const name = names[Math.floor(Math.random() * names.length)];
-                const action = actions[Math.floor(Math.random() * actions.length)];
-                const message = `${name} ${action}`;
-                
-                const notification = document.createElement("div");
-                notification.className = "notificacao";
-                notification.innerHTML = `<i class="bi bi-check-circle" style="margin-right: 8px;"></i> ${message}`;
-                
-                if (this.simpleNotificationContainer) {
-                    this.simpleNotificationContainer.appendChild(notification);
-                    
-                    // Remover notificação após 5 segundos
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.remove();
-                        }
-                    }, 5000);
-                }
-            }
-            
-            // Sistema de notificações avançadas
-            showAdvancedNotification() {
                 const products = ["Painel XIT Android", "Painel XIT iPhone", "Painel CLT VIP"];
-                const names = ["João", "Maria", "Pedro", "Ana", "Carlos", "Fernanda", "Rafael", "Juliana"];
-                const cities = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Salvador", "Brasília", "Fortaleza"];
+                const cities = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Salvador", "Brasília", "Fortaleza", "Recife", "Porto Alegre"];
                 
-                const product = products[Math.floor(Math.random() * products.length)];
                 const name = names[Math.floor(Math.random() * names.length)];
+                const product = products[Math.floor(Math.random() * products.length)];
                 const city = cities[Math.floor(Math.random() * cities.length)];
                 
                 const notification = document.createElement('div');
                 notification.className = 'purchase-notification';
                 notification.innerHTML = `
-                    <button class="notification-close">&times;</button>
+                    <button class="notification-close" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: #fff; font-size: 18px; cursor: pointer;">&times;</button>
                     <div class="notification-header">
                         <div class="notification-icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <div class="notification-content">
-                            <h4>Nova Compra!</h4>
-                            <p><span class="notification-product">${product}</span></p>
-                            <p>${name} de ${city}</p>
-                            <div class="notification-time">
+                        <div>
+                            <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: var(--accent-primary);">Nova Compra Confirmada!</h4>
+                            <p style="margin: 5px 0; font-size: 14px; color: #fff;"><strong>${product}</strong></p>
+                            <p style="margin: 0; font-size: 13px; color: #ccc;">${name} • ${city}</p>
+                            <div style="font-size: 11px; color: #999; margin-top: 8px; display: flex; align-items: center; gap: 5px;">
                                 <i class="fas fa-clock"></i>
                                 Agora mesmo
                             </div>
@@ -1410,38 +1615,31 @@
                     </div>
                 `;
                 
-                if (this.notificationContainer) {
-                    this.notificationContainer.appendChild(notification);
-                    
-                    // Mostrar notificação
-                    setTimeout(() => notification.classList.add('show'), 100);
-                    
-                    // Fechar ao clicar no X
-                    const closeBtn = notification.querySelector('.notification-close');
-                    closeBtn.addEventListener('click', () => {
+                this.notificationContainer.appendChild(notification);
+                
+                // Mostrar notificação
+                setTimeout(() => notification.classList.add('show'), 100);
+                
+                // Fechar ao clicar no X
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.addEventListener('click', () => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 500);
+                });
+                
+                // Auto remover após 6 segundos
+                setTimeout(() => {
+                    if (notification.parentNode) {
                         notification.classList.remove('show');
                         setTimeout(() => notification.remove(), 500);
-                    });
-                    
-                    // Auto remover após 5 segundos
-                    setTimeout(() => {
-                        if (notification.parentNode) {
-                            notification.classList.remove('show');
-                            setTimeout(() => notification.remove(), 500);
-                        }
-                    }, 5000);
-                }
+                    }
+                }, 6000);
             }
             
-            // Iniciar loop de notificações
-            startNotificationLoop() {
+            // Sistema de notificações
+            startNotificationSystem() {
                 const showNotification = () => {
-                    // Alternar entre notificações simples e avançadas
-                    if (Math.random() > 0.5) {
-                        this.showSimpleNotification();
-                    } else {
-                        this.showAdvancedNotification();
-                    }
+                    this.showPremiumNotification();
                     
                     // Próxima notificação em 8-15 segundos
                     const nextDelay = Math.floor(Math.random() * 7000) + 8000;
@@ -1452,25 +1650,122 @@
                 setTimeout(showNotification, 3000);
             }
             
-            // Atualizar contador de vendas periodicamente
-            startSalesCounterUpdate() {
-                const updateSales = () => {
-                    this.updateSalesCounter();
+            // Atualizar contadores
+            updateCounters() {
+                // Atualizar vendas
+                if (this.salesCounter) {
+                    const increase = Math.floor(Math.random() * 3) + 1;
+                    this.currentSales += increase;
+                    this.salesCounter.textContent = this.currentSales;
+                }
+                
+                // Atualizar usuários
+                if (this.userCounter) {
+                    const increase = Math.floor(Math.random() * 8) + 2;
+                    this.currentUsers += increase;
+                    this.userCounter.textContent = this.currentUsers.toLocaleString();
+                }
+            }
+            
+            startCounterUpdates() {
+                const updateCounters = () => {
+                    this.updateCounters();
                     
                     // Próxima atualização em 15-30 segundos
                     const nextUpdate = Math.floor(Math.random() * 15000) + 15000;
-                    setTimeout(updateSales, nextUpdate);
+                    setTimeout(updateCounters, nextUpdate);
                 };
                 
                 // Primeira atualização após 10 segundos
-                setTimeout(updateSales, 10000);
+                setTimeout(updateCounters, 10000);
+            }
+            
+            // Animações de scroll
+            initScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                }, observerOptions);
+                
+                document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                    observer.observe(el);
+                });
+            }
+            
+            // Micro-interações
+            initMicroInteractions() {
+                // Hover effects para cards
+                document.querySelectorAll('.hover-lift').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0)';
+                    });
+                });
+                
+                // Efeito de glow para elementos
+                document.querySelectorAll('.hover-glow').forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        element.style.boxShadow = '0 0 30px rgba(0, 255, 65, 0.3)';
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        element.style.boxShadow = '';
+                    });
+                });
+                
+                // Smooth scroll para links internos
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
             }
         }
         
         // Inicializar sistema quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {
-            new NotificationSystem();
+            new PremiumNotificationSystem();
+            
+            // Preload de imagens críticas
+            const criticalImages = [
+                'imgs/logo.png',
+                'imgs/android.png', 
+                'imgs/iphone.png',
+                'imgs/CLT.jpg'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
         });
+        
+        // Performance optimization
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                // Lazy load non-critical elements
+                console.log('🚀 Sistema Premium inicializado com sucesso!');
+            });
+        }
     </script>
 </body>
 </html>
