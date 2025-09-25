@@ -1458,31 +1458,29 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Sistema Premium de Notificações e Interações -->
+  <!-- Sistema Premium de Interações -->
     <script>
-        class PremiumNotificationSystem {
+        class PremiumInteractionSystem {
             constructor() {
                 this.salesCounter = document.getElementById('salesCount');
                 this.userCounter = document.getElementById('userCounter');
                 this.notificationContainer = document.getElementById('notificationContainer');
-                this.countdownTimer = document.getElementById('countdownTimer');
                 
                 this.currentSales = 247;
-                this.currentUsers = 347;
+                this.currentUsers = 247;
                 
                 this.init();
             }
             
             init() {
-                this.startCountdown();
-                this.startNotificationSystem();
-                this.startCounterUpdates();
-                this.initDraggableCounter();
-                this.initScrollAnimations();
-                this.initMicroInteractions();
+                this.startNotifications();
+                this.startCounters();
+                this.initDraggable();
+                this.initAnimations();
+                this.initInteractions();
             }
             
-                 // Sistema de notificações otimizado para mobile
+            // Sistema de notificações otimizado para mobile
             showNotification() {
                 const names = [
                     "João Silva", "Maria Santos", "Pedro Costa", "Ana Lima", "Carlos Souza",
@@ -1569,10 +1567,9 @@
                 // Primeira atualização após 10 segundos
                 setTimeout(updateCounters, 10000);
             }
-
             
-            // Contador arrastável premium
-            initDraggableCounter() {
+            // Contador arrastável otimizado para mobile
+            initDraggable() {
                 const counter = document.getElementById('salesCounterMobile');
                 if (!counter) return;
                 
@@ -1616,9 +1613,9 @@
 
                         counter.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
                         counter.style.position = 'fixed';
-                        counter.style.top = '20px';
+                        counter.style.top = '15px';
                         counter.style.right = 'auto';
-                        counter.style.left = '20px';
+                        counter.style.left = '15px';
                     }
                 };
 
@@ -1634,115 +1631,14 @@
                 document.addEventListener('mousemove', dragMove);
                 document.addEventListener('mouseup', dragEnd);
 
-                // Touch events
+                // Touch events para mobile
                 counter.addEventListener('touchstart', dragStart, { passive: false });
                 document.addEventListener('touchmove', dragMove, { passive: false });
                 document.addEventListener('touchend', dragEnd);
             }
             
-            // Sistema de notificações premium
-            showPremiumNotification() {
-                const names = [
-                    "Gabriel Silva", "Mariana Costa", "Pedro Oliveira", "Ana Santos", "Carlos Souza",
-                    "Fernanda Lima", "Rafael Alves", "Juliana Ferreira", "Lucas Martins", "Camila Rocha",
-                    "Thiago Pereira", "Beatriz Carvalho", "Felipe Ribeiro", "Larissa Gomes", "Bruno Barbosa",
-                    "Isabella Dias", "Diego Nascimento", "Amanda Araújo", "Mateus Castro", "Natália Teixeira"
-                ];
-                
-                const products = ["Painel XIT Android", "Painel XIT iPhone", "Painel CLT VIP"];
-                const cities = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Salvador", "Brasília", "Fortaleza", "Recife", "Porto Alegre"];
-                
-                const name = names[Math.floor(Math.random() * names.length)];
-                const product = products[Math.floor(Math.random() * products.length)];
-                const city = cities[Math.floor(Math.random() * cities.length)];
-                
-                const notification = document.createElement('div');
-                notification.className = 'purchase-notification';
-                notification.innerHTML = `
-                    <button class="notification-close" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: #fff; font-size: 18px; cursor: pointer;">&times;</button>
-                    <div class="notification-header">
-                        <div class="notification-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div>
-                            <h4 style="margin: 0; font-size: 16px; font-weight: 700; color: var(--accent-primary);">Nova Compra Confirmada!</h4>
-                            <p style="margin: 5px 0; font-size: 14px; color: #fff;"><strong>${product}</strong></p>
-                            <p style="margin: 0; font-size: 13px; color: #ccc;">${name} • ${city}</p>
-                            <div style="font-size: 11px; color: #999; margin-top: 8px; display: flex; align-items: center; gap: 5px;">
-                                <i class="fas fa-clock"></i>
-                                Agora mesmo
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                this.notificationContainer.appendChild(notification);
-                
-                // Mostrar notificação
-                setTimeout(() => notification.classList.add('show'), 100);
-                
-                // Fechar ao clicar no X
-                const closeBtn = notification.querySelector('.notification-close');
-                closeBtn.addEventListener('click', () => {
-                    notification.classList.remove('show');
-                    setTimeout(() => notification.remove(), 500);
-                });
-                
-                // Auto remover após 6 segundos
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.classList.remove('show');
-                        setTimeout(() => notification.remove(), 500);
-                    }
-                }, 6000);
-            }
-            
-            // Sistema de notificações
-            startNotificationSystem() {
-                const showNotification = () => {
-                    this.showPremiumNotification();
-                    
-                    // Próxima notificação em 8-15 segundos
-                    const nextDelay = Math.floor(Math.random() * 7000) + 8000;
-                    setTimeout(showNotification, nextDelay);
-                };
-                
-                // Primeira notificação após 3 segundos
-                setTimeout(showNotification, 3000);
-            }
-            
-            // Atualizar contadores
-            updateCounters() {
-                // Atualizar vendas
-                if (this.salesCounter) {
-                    const increase = Math.floor(Math.random() * 3) + 1;
-                    this.currentSales += increase;
-                    this.salesCounter.textContent = this.currentSales;
-                }
-                
-                // Atualizar usuários
-                if (this.userCounter) {
-                    const increase = Math.floor(Math.random() * 8) + 2;
-                    this.currentUsers += increase;
-                    this.userCounter.textContent = this.currentUsers.toLocaleString();
-                }
-            }
-            
-            startCounterUpdates() {
-                const updateCounters = () => {
-                    this.updateCounters();
-                    
-                    // Próxima atualização em 15-30 segundos
-                    const nextUpdate = Math.floor(Math.random() * 15000) + 15000;
-                    setTimeout(updateCounters, nextUpdate);
-                };
-                
-                // Primeira atualização após 10 segundos
-                setTimeout(updateCounters, 10000);
-            }
-            
-            // Animações de scroll
-            initScrollAnimations() {
+            // Animações de entrada
+            initAnimations() {
                 const observerOptions = {
                     threshold: 0.1,
                     rootMargin: '0px 0px -50px 0px'
@@ -1763,11 +1659,11 @@
             }
             
             // Micro-interações
-            initMicroInteractions() {
+            initInteractions() {
                 // Hover effects para cards
                 document.querySelectorAll('.hover-lift').forEach(card => {
                     card.addEventListener('mouseenter', () => {
-                        card.style.transform = 'translateY(-10px)';
+                        card.style.transform = 'translateY(-8px)';
                     });
                     
                     card.addEventListener('mouseleave', () => {
@@ -1775,7 +1671,7 @@
                     });
                 });
                 
-                // Efeito de glow para elementos
+                // Efeito de glow
                 document.querySelectorAll('.hover-glow').forEach(element => {
                     element.addEventListener('mouseenter', () => {
                         element.style.boxShadow = '0 0 30px rgba(0, 255, 65, 0.3)';
@@ -1786,7 +1682,7 @@
                     });
                 });
                 
-                // Smooth scroll para links internos
+                // Smooth scroll
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         e.preventDefault();
@@ -1802,9 +1698,9 @@
             }
         }
         
-        // Inicializar sistema quando a página carregar
+        // Inicializar sistema
         document.addEventListener('DOMContentLoaded', function() {
-            new PremiumNotificationSystem();
+            new PremiumInteractionSystem();
             
             // Preload de imagens críticas
             const criticalImages = [
@@ -1820,10 +1716,9 @@
             });
         });
         
-        // Performance optimization
+        // Otimização de performance
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
-                // Lazy load non-critical elements
                 console.log('🚀 Sistema Premium inicializado com sucesso!');
             });
         }
