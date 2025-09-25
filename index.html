@@ -1482,36 +1482,94 @@
                 this.initMicroInteractions();
             }
             
-            // Sistema de countdown premium
-            startCountdown() {
-                let hours = 23;
-                let minutes = 47;
-                let seconds = 32;
+                 // Sistema de notificações otimizado para mobile
+            showNotification() {
+                const names = [
+                    "João Silva", "Maria Santos", "Pedro Costa", "Ana Lima", "Carlos Souza",
+                    "Juliana Oliveira", "Rafael Alves", "Camila Ferreira", "Lucas Pereira", "Beatriz Rocha",
+                    "Gabriel Martins", "Larissa Cunha", "Felipe Barbosa", "Natália Gomes", "Diego Nascimento"
+                ];
                 
-                const updateCountdown = () => {
-                    if (seconds > 0) {
-                        seconds--;
-                    } else if (minutes > 0) {
-                        minutes--;
-                        seconds = 59;
-                    } else if (hours > 0) {
-                        hours--;
-                        minutes = 59;
-                        seconds = 59;
-                    } else {
-                        hours = 23;
-                        minutes = 59;
-                        seconds = 59;
+                const products = ["Painel Android", "Painel iPhone", "Painel CLT VIP"];
+                const cities = ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Salvador", "Brasília", "Fortaleza"];
+                
+                const name = names[Math.floor(Math.random() * names.length)];
+                const product = products[Math.floor(Math.random() * products.length)];
+                const city = cities[Math.floor(Math.random() * cities.length)];
+                
+                const notification = document.createElement('div');
+                notification.className = 'purchase-notification';
+                notification.innerHTML = `
+                    <div class="notification-header">
+                        <div class="notification-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="notification-text">
+                            <p class="notification-title">🔥 NOVA COMPRA!</p>
+                            <p class="notification-product"><strong>${product}</strong></p>
+                            <p class="notification-location">${name} • ${city}</p>
+                        </div>
+                    </div>
+                `;
+                
+                this.notificationContainer.appendChild(notification);
+                
+                // Mostrar notificação
+                setTimeout(() => notification.classList.add('show'), 100);
+                
+                // Auto remover após 5 segundos
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.classList.remove('show');
+                        setTimeout(() => notification.remove(), 500);
                     }
+                }, 5000);
+            }
+            
+            // Sistema de notificações
+            startNotifications() {
+                const showNotification = () => {
+                    this.showNotification();
                     
-                    const time = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    if (this.countdownTimer) {
-                        this.countdownTimer.textContent = time;
-                    }
+                    // Próxima notificação em 8-15 segundos
+                    const nextDelay = Math.floor(Math.random() * 7000) + 8000;
+                    setTimeout(showNotification, nextDelay);
                 };
                 
-                setInterval(updateCountdown, 1000);
+                // Primeira notificação após 3 segundos
+                setTimeout(showNotification, 3000);
             }
+            
+            // Atualizar contadores
+            updateCounters() {
+                // Atualizar vendas
+                if (this.salesCounter) {
+                    const increase = Math.floor(Math.random() * 3) + 1;
+                    this.currentSales += increase;
+                    this.salesCounter.textContent = this.currentSales;
+                }
+                
+                // Atualizar usuários
+                if (this.userCounter) {
+                    const increase = Math.floor(Math.random() * 8) + 3;
+                    this.currentUsers += increase;
+                    this.userCounter.textContent = this.currentUsers;
+                }
+            }
+            
+            startCounters() {
+                const updateCounters = () => {
+                    this.updateCounters();
+                    
+                    // Próxima atualização em 15-30 segundos
+                    const nextUpdate = Math.floor(Math.random() * 15000) + 15000;
+                    setTimeout(updateCounters, nextUpdate);
+                };
+                
+                // Primeira atualização após 10 segundos
+                setTimeout(updateCounters, 10000);
+            }
+
             
             // Contador arrastável premium
             initDraggableCounter() {
